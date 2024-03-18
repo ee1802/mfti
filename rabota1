@@ -1,0 +1,262 @@
+#
+# import cv2
+# cap = cv2.VideoCapture(0)
+#
+# while True:
+#     return_code, img = cap.read()
+#     # print(type(img), img)
+#
+#     cv2.imshow('opencv', img)
+#     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+#     img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+#     # print(img_gray)
+#     cv2.imshow('HSV', img_hsv)
+#
+#     cv2.imshow('GRAY', img_gray)
+#     key = cv2.waitKey(10)
+#     print(key)
+#     if key == ord(' '):
+#         break
+# cap.release()
+# cv2.destroyAllWindows()
+# import cv2
+# import numpy as np
+#
+# cam = cv2.VideoCapture(0)
+#
+# success, frame = cam.read()
+#
+# print(success, frame.shape, type(frame[10, 20, 1]))
+# wide = frame.shape[1]
+# height = frame.shape[0]
+# print(f"Razreshenie {wide} na {height}")
+#
+# while (True):
+#     # read
+#     success, frame = cam.read()
+#
+#     # process
+#     frame[100:200, 240:320, :] = 0
+#     # frame = 255 - frame
+#
+#     #     if (np.random.randint(4) == 3):
+#     #         frame[100:700, 100:1200, 1] = frame[120:720, 130:1230, 1]
+#
+#     #     #if (np.random.randint(3) == 2):
+#     #     #    frame[:, :, 2] = frame[:, :, 1]
+#
+#     #     if (np.random.randint(3) == 2):
+#     #         frame[:, 100:200, :] = 255 - frame[:, 100:200, :]
+#
+#     # output
+#     cv2.imshow("frame", frame)
+#
+#     # process keyboard
+#     key = cv2.waitKey(50) & 0xFF
+#
+#     if (key == ord('q')):
+#         break
+#
+# cv2.waitKey(0)
+# cam.release()
+# cv2.destroyAllWindows()
+# cv2.waitKey(10)
+
+
+
+
+
+
+
+
+#
+# import cv2
+# import numpy as np
+#
+# cam = cv2.VideoCapture(0)
+#
+# success, frame = cam.read()
+#
+#
+# print(success, frame.shape, type(frame[10, 20, 1]))
+# wide = frame.shape[1]  # Ширина изображения
+# height = frame.shape[0]  # Высота изображения
+# print(f"Разрешение {wide} на {height}")
+#
+#
+# square_side = 100
+#
+# start_x = wide // 2 - square_side // 2
+# start_y = height // 2 - square_side // 2
+#
+# while True:
+#
+#     success, frame = cam.read()
+#
+#     frame[start_y:start_y+square_side, start_x:start_x+square_side, :] = 0
+#
+#     cv2.imshow("frame", frame)
+#     pink_tint = np.full(frame.shape, [203, 192, 255], dtype=np.uint8)
+#     frame = cv2.addWeighted(frame, 0.7, pink_tint, 0.3, 0)
+#     key = cv2.waitKey(50) & 0xFF
+#
+#     if key == ord('q'):
+#         break
+#
+# cv2.waitKey(0)
+# cam.release()
+# cv2.destroyAllWindows()
+# cv2.waitKey(10)
+
+
+
+
+
+
+#
+#
+# import cv2
+# import numpy as np
+#
+# cam = cv2.VideoCapture(0)
+#
+# success, frame = cam.read()
+# if not success:
+#     print("Failed to capture image")
+#     cam.release()
+#     cv2.destroyAllWindows()
+#     exit()
+#
+# print(success, frame.shape, type(frame[10, 20, 1]))
+# wide = frame.shape[1]  # Ширина изображения
+# height = frame.shape[0]  # Высота изображения
+# print(f"Разрешение {wide} на {height}")
+#
+# # Определение размера стороны квадрата как 50% от минимальной стороны кадра
+# square_side = int(min(wide, height) * 0.5)
+# # Вычисляем начальные координаты квадрата, чтобы он был в центре
+# start_x = wide // 2 - square_side // 2
+# start_y = height // 2 - square_side // 2
+#
+# while True:
+#     # Считываем кадр
+#     success, frame = cam.read()
+#
+#     # Создаем синий квадрат в середине камеры
+#     frame[start_y:start_y+square_side, start_x:start_x+square_side, :] = [255, 0, 0]  # Синий цвет
+#
+#     # Добавляем розовый оттенок на всё изображение
+#     # Создаем массив такого же размера, как и frame, с розовым оттенком
+#     pink_tint = np.full(frame.shape, [203, 192, 255], dtype=np.uint8)  # Светло-розовый цвет в формате BGR
+#     # Смешиваем исходное изображение с розовым фильтром
+#     frame = cv2.addWeighted(frame, 0.7, pink_tint, 0.3, 0)
+#
+#     # Вывод обработанного кадра
+#     cv2.imshow("frame", frame)
+#
+#     # Обработка нажатий клавиш
+#     key = cv2.waitKey(50) & 0xFF
+#
+#     if key == ord('q'):
+#         break
+#
+# cv2.waitKey(0)
+# cam.release()
+# cv2.destroyAllWindows()
+# cv2.waitKey(10)
+
+
+import cv2
+import numpy as np
+
+cam = cv2.VideoCapture(0)
+
+success, frame = cam.read()
+
+
+def nothing(x):
+    print(lh)
+
+
+cv2.namedWindow("mask")
+
+# (37, 43, 69) (185, 189, 231)
+
+cv2.createTrackbar('lh', "mask", 37, 255, nothing)
+cv2.createTrackbar('ls', "mask", 43, 255, nothing)
+cv2.createTrackbar('lv', "mask", 69, 255, nothing)
+cv2.createTrackbar('hh', "mask", 185, 255, nothing)
+cv2.createTrackbar('hs', "mask", 189, 255, nothing)
+cv2.createTrackbar('hv', "mask", 231, 255, nothing)
+
+while (True):
+    # read
+    success, frame_ = cam.read()
+
+    frame = cv2.resize(frame_, (640, 360))
+
+    # process
+    hsv = cv2.cvtColor(frame, cv2.COLOR_RGB2HSV)
+
+    lh = cv2.getTrackbarPos('lh', "mask")
+    ls = cv2.getTrackbarPos('ls', "mask")
+    lv = cv2.getTrackbarPos('lv', "mask")
+    hh = cv2.getTrackbarPos('hh', "mask")
+    hs = cv2.getTrackbarPos('hs', "mask")
+    hv = cv2.getTrackbarPos('hv', "mask")
+
+    lb = (lh, ls, lv)
+    hb = (hh, hs, hv)
+
+    # print(lb, hb)
+
+    mask = cv2.inRange(hsv, lb, hb)
+
+    # ksz = 3
+    # kernel = np.ones((ksz, ksz), np.uint8)
+
+    clear = mask  # cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+
+    connectivity = 4
+    # Perform the operation
+    output = cv2.connectedComponentsWithStats(clear, connectivity, cv2.CV_32S)
+    # Get the results
+    # The first cell is the number of labels
+    num_labels = output[0]
+    # The second cell is the label matrix
+    labels = output[1]
+    # The third cell is the stat matrix
+    stats = output[2]
+    # The fourth cell is the centroid matrix
+    # centroids = output[3]
+
+    for i in range(num_labels):
+        if (stats[i, cv2.CC_STAT_AREA] < 10000):
+            clear[np.where(labels == i)] = 0
+
+    print("")
+
+    # output
+    # cv2.imshow("frame", frame)
+    # cv2.imshow("hsv", hsv)
+
+    concat = np.concatenate((mask, clear), axis=0)
+
+    frame[:, :, 1] += clear // 3
+    cv2.imshow("highlighted", frame)
+    cv2.imshow("mask", concat)
+    # cv2.imshow("clear", clear)
+    # cv2.imshow("h", hsv[:, :, 0])
+    # cv2.imshow("s", hsv[:, :, 1])
+    # cv2.imshow("v", hsv[:, :, 2])
+
+    # process keyboard
+    key = cv2.waitKey(200) & 0xFF
+
+    if (key == ord('q')):
+        break
+
+cv2.waitKey(0)
+cam.release()
+cv2.destroyAllWindows()
+cv2.waitKey(10)
